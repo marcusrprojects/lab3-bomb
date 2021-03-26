@@ -1,1 +1,8 @@
+phase_1: "To infinity...and beyond!"
 
+This code moves the value at address 0x402547 into the register %esi, and
+compares the inputted value to this. Calling on <strings_not_equal>, it 
+will pass the test so that it will jump to the next stage if they are equal,
+harnessing condition codes with "test." If not, it will blow up. Therefore,
+the value must equal "To infinity...and beyond!" as this is the string that
+is located in the address 0x402547.
