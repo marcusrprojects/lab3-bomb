@@ -6,3 +6,24 @@ will pass the test so that it will jump to the next stage if they are equal,
 harnessing condition codes with "test." If not, it will blow up. Therefore,
 the value must equal "To infinity...and beyond!" as this is the string that
 is located in the address 0x402547.
+
+phase_2: 3 4 6 9 13 18
+
+To find this solution, I followed the function to see where it compares values
+and decides whether or not to jump, and on what conditions. Initially, one needed
+to understand the purpose of the read_six_numbers function, which checks to see if
+there are 6 numbers inputted by the user or it jumps to boom. Then, the function
+checks to make sure the first value is positive and will continue from there.
+In using GDB and examining the eax register for each one, I was able to correct the 6
+values sequentially until the rbx register, which would be loaded with the next value
+to test, was equal to the eax register's value.
+
+phase_3: 3 255
+
+For this phase, the function first checks for how many numbers the user inputs, which must
+be more than 1, and there cannot be strings. It stores the number count in eax and continues.
+Then, it compares the first number with 7 and if it is negative or greater than 7, it blows up.
+Otherwise, it continues. It then puts this number in the eax register. It will use this value to
+decide how many mov commands down it should jump to. This mov command determines eax's new value
+and this value must match up with the user's second inputted value to pass this phase.
+
