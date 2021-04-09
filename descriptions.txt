@@ -27,7 +27,7 @@ Otherwise, it continues. It then puts this number in the eax register. It will u
 decide how many mov commands down it should jump to. This mov command determines eax's new value
 and this value must match up with the user's second inputted value to pass this phase.
 
-phase_4: 60 3 2
+phase_4: 60 3
 
 For this phase, the function first uses __isoc99_sscanf@plt to discover how many numbers there are.
 If there is 1 number only, 1 is stored in the eax register. If there are 2+ numbers inputted, it returns
@@ -52,3 +52,16 @@ is true, it will defuse the bomb. In order to understand which characters to inp
 Unicode characters and their hexidecimal equivalents. In this function, you can traverse the large string in
 memory by choosing a letter that's last 4 digits are how much you would shift the string's letters by to get
 the corresponding letter in "memory."
+
+phase_6: 3 6 1 4 5 2
+
+In this phase, the function first pushes r13, r12, rbp, and rbx onto the stack for later usage, also making a
+lot of room, 88 bytes, for a new frame on the stack. Creating a pointer to a point at rsp+30, it stores the
+input data there by way of the <read_six_numbers> function. If there are 6+ numbers, it will return 6. Otherwise,
+it will blow up. It then compares each number with 5 and will blow up if any of the values are not under or 
+equal to 6, utilizing an unsigned comparison that makes negative numbers appear large. Therefore, all values 
+initially inputted must be in the range 1-6. Furthermore, the function later loops to ensure that this value 
+can not be repeated, so each input must be unique. Each input has calculations performed on it and is compared
+to a node. The first node was -58, the second was 33, the third was 115, the fourth was -105, the fifth was
+38, and the sixth was 45. Therefore, only "3 6 1 4 5 2" could match these nodes and defuse this bomb.
+
