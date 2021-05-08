@@ -1,0 +1,14 @@
+Lab 3 - BitBombs
+Marcus
+
+Phases defused: 6/6
+
+Comments:
+
+-Phase 3 uses a jump table (ie switch statement) and has multiple solutions
+
+-Phase 4 recursion in func4 is similar to a Fibonacci sequence (f(n) determined by f(n-1) and f(n-2))
+
+-Phase 5 is using an array to translate each char
+
+Score: 95/100
